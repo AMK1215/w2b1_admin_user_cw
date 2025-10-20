@@ -17,9 +17,16 @@ class ContactController extends Controller
     public function get()
     {
         $player = Auth::user();
-        // Note: agent_id is actually owner_id (Owner->Player relationship only)
-
-        $contact = Contact::where('agent_id', $player->agent_id)->get();
+        
+        // Handle both authenticated and guest users
+        if ($player && $player->agent_id) {
+            // Authenticated player - get their owner's contact info
+            $contact = Contact::where('agent_id', $player->agent_id)->get();
+        } else {
+            // Guest user - return all contacts or default contact
+            // You can modify this to return specific contacts for guests
+            $contact = Contact::all(); // or Contact::where('agent_id', 1)->get() for system default
+        }
 
         return $this->success(ContactResource::collection($contact));
     }

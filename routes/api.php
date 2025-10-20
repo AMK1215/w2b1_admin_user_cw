@@ -65,6 +65,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     // Player game logs
     Route::get('/player/game-logs', [GameLogController::class, 'index']);
     Route::get('user', [AuthController::class, 'getUser']);
+    Route::get('contact', [ContactController::class, 'get']);
     
 });
 
@@ -75,7 +76,6 @@ Route::get('banner_Text', [BannerController::class, 'bannerText']);
 Route::get('popup-ads-banner', [BannerController::class, 'AdsBannerIndex']);
 Route::get('banner', [BannerController::class, 'index']);
 Route::get('videoads', [BannerController::class, 'ApiVideoads']);
-Route::get('contact', [ContactController::class, 'get']);
 
 
 
