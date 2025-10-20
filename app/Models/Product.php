@@ -25,7 +25,7 @@ class Product extends Model
         'game_list_status',
     ];
 
-    protected $appends = ['imgUrl']; // Changed from 'image' to 'imgUrl'
+    protected $appends = ['img_url']; // Changed to snake_case to match API resource
     // protected $appends = ['image'];
 
     public function gameTypes()
